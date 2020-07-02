@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
-import pymongo
-from pymongo.errors import DuplicateKeyError
-from settings import MONGO_HOST, MONGO_PORT
+try:
+    import pymongo
+    from pymongo.errors import DuplicateKeyError
+    from settings import MONGO_HOST, MONGO_PORT
+except Exception as e:
+    print('Warning: pymongo==3.10.1 should be installed if MongoDB is used')
 import json
 
 
