@@ -32,3 +32,8 @@ class MongoDBPipeline(object):
             collection.insert(dict(item))
         except DuplicateKeyError:
             pass
+
+
+class JsonPipeline(object):
+    def __init__(self):
+        self.f = open('')

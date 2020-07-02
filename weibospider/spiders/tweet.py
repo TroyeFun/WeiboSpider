@@ -46,8 +46,8 @@ class TweetSpider(Spider):
             return urls
 
         # select urls generation by the following code
-        urls = init_url_by_user_id()
-        # urls = init_url_by_keywords()
+        # urls = init_url_by_user_id()
+        urls = init_url_by_keywords()
         for url in urls:
             yield Request(url, callback=self.parse)
 
