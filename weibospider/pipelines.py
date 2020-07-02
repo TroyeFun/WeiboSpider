@@ -2,6 +2,7 @@
 import pymongo
 from pymongo.errors import DuplicateKeyError
 from settings import MONGO_HOST, MONGO_PORT
+import json
 
 
 class MongoDBPipeline(object):
@@ -36,4 +37,14 @@ class MongoDBPipeline(object):
 
 class JsonPipeline(object):
     def __init__(self):
-        self.f = open('')
+        self.f = open('./data/data.json', 'w')
+        self.flush_freq = 100
+        self.count = 0
+
+    def process_item(self, item, spider):
+        content = json.dumps(dict(item), ensure_ascii=False) + '\n'
+        self.f.write(content)
+        self.count += 1
+        if self.count % self.flush_freq == 0:
+            self.f.flush()
+        return item

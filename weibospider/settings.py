@@ -25,7 +25,8 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 ITEM_PIPELINES = {
-    'pipelines.MongoDBPipeline': 300,
+    #'pipelines.MongoDBPipeline': 300,
+     'pipelines.JsonPipeline': 300,
 }
 
 MONGO_HOST = '127.0.0.1'
